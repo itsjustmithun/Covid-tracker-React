@@ -3,9 +3,12 @@ import {
   MenuItem,
   FormControl,
   Select,
+  CardContent,
+  Card,
 } from "@material-ui/core";
 import InfoBox from './InfoBox';
 import './App.css';
+import Map from "./Map";
 
 function App() {
   const [countries, setCountries] = useState([]); 
@@ -41,45 +44,38 @@ function App() {
   }
   return (
     <div className="app">
-      <div className="app__header">
-      <h1>COVID TRACKER</h1>
-      <FormControl className="app__dropdown">
-        <Select
-          variant="outlined"
-          onChange={onCountryChange}
-          value={country}
-        >
-          
-          <MenuItem value="worldwide">Worldwide</MenuItem> 
-          {countries.map((country) =>(
-            <MenuItem value={country.value}>{country.name}</MenuItem> //Loop through contries
-          ))}
-
-          {/* <MenuItem value="worldwide">WorldWide</MenuItem>
-          <MenuItem value="worldwide">test 2</MenuItem>
-          <MenuItem value="worldwide">test 3</MenuItem>
-          <MenuItem value="worldwide">test 4</MenuItem> */}
-
-        </Select>
-      </FormControl>
-      </div>
-      
-      <div className="app__stats">
-        <InfoBox title="Coronavirus Cases" cases={123} total={2000}/>
-        <InfoBox title="Recovered" cases={123} total={2000}/>
-        <InfoBox title="Deaths" cases={123} total={2000}/>
+      <div className="app__left">
+        <div className="app__header">
+          <h1>COVID TRACKER</h1>
+          <FormControl className="app__dropdown">
+            <Select
+              variant="outlined"
+              onChange={onCountryChange}
+              value={country}
+            >
+              
+              <MenuItem value="worldwide">Worldwide</MenuItem> 
+              {countries.map((country) =>(
+                <MenuItem value={country.value}>{country.name}</MenuItem> //Loop through contries
+              ))}
+            </Select>
+          </FormControl>
+        </div>
         
-        {/* Infoboxs title = Coronavirus cases */}
-        {/* Infoboxs title = Coronavirus recoveries */}
-        {/* Infoboxs*/}
+        <div className="app__stats">
+          <InfoBox title="Coronavirus Cases" cases={123} total={2000}/>
+          <InfoBox title="Recovered" cases={123} total={2000}/>
+          <InfoBox title="Deaths" cases={123} total={2000}/>
+        </div>
+  
+        <Map />
       </div>
-     
-
-      {/*Table*/}
-      {/*Graph*/}
-
-      {/*Map*/}
-    
+      <Card className="app_right">
+        <CardContent>
+          <h3>Live Cases by Country</h3>
+          <h3>Worldwide New Cases</h3>
+        </CardContent>
+      </Card>
     </div>
   );
 }
