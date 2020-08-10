@@ -11,6 +11,10 @@ body {
   justify-content: space-evenly;
   padding: 20px;
 }
+
+.app__left {
+  flex: 0.9;
+}
 .app__header{
   display: flex;
   align-items: center;
