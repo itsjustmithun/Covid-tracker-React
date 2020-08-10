@@ -4,10 +4,12 @@ import {
   FormControl,
   Select,
 } from "@material-ui/core";
+import InfoBox from './InfoBox';
 import './App.css';
 
 function App() {
   const [countries, setCountries] = useState([]); 
+  const [country, setCountry] = useState('worldwide'); //I am using worldwide as default on select
   
   //USEEFFECT = Runs a piece of code based on given condition
 
@@ -32,7 +34,11 @@ function App() {
     getCountriesData();
   }, []);
 
-
+  const onCountryChange = async (event) => {
+    const countryCode = event.target.value;
+    
+    setCountry(countryCode);
+  }
   return (
     <div className="app">
       <div className="app__header">
@@ -40,28 +46,34 @@ function App() {
       <FormControl className="app__dropdown">
         <Select
           variant="outlined"
-          value="abc"
+          onChange={onCountryChange}
+          value={country}
         >
-          {/* Loop through all countries */}
-
+          
+          <MenuItem value="worldwide">Worldwide</MenuItem> 
           {countries.map((country) =>(
-            <MenuItem value={country.value}>{country.name}</MenuItem>
+            <MenuItem value={country.value}>{country.name}</MenuItem> //Loop through contries
           ))}
+
           {/* <MenuItem value="worldwide">WorldWide</MenuItem>
           <MenuItem value="worldwide">test 2</MenuItem>
           <MenuItem value="worldwide">test 3</MenuItem>
           <MenuItem value="worldwide">test 4</MenuItem> */}
+
         </Select>
       </FormControl>
       </div>
       
-
-      {/* header */}
-      {/* Title + dropdown*/}
-
-      {/* Infoboxs*/}
-      {/* Infoboxs*/}
-      {/* Infoboxs*/}
+      <div className="app__stats">
+        <InfoBox title="Coronavirus Cases" cases={123} total={2000}/>
+        <InfoBox title="Recovered" cases={123} total={2000}/>
+        <InfoBox title="Deaths" cases={123} total={2000}/>
+        
+        {/* Infoboxs title = Coronavirus cases */}
+        {/* Infoboxs title = Coronavirus recoveries */}
+        {/* Infoboxs*/}
+      </div>
+     
 
       {/*Table*/}
       {/*Graph*/}
