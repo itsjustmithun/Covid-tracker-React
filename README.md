@@ -1,6 +1,6 @@
 ### Link to the project
 
-        https://covid-19-tracker-d007c.web.app/
+https://covid-19-tracker-d007c.web.app/
 
 ![COVID-19-Tracker.png](COVID-19-Tracker.png)
 
